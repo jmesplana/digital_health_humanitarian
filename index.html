@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>IFRC Digital Health Solutions</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+        <style>
+            :root {
+                --dark-grey: #323232;
+                --white: #FFFFFF;
+                --red: #F5333F;
+                --dark-blue: #011E41;
+            }
+            
+            body {
+                color: var(--dark-grey);
+                background-color: var(--white);
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .main-header {
+                background-color: var(--white);
+                padding: 15px 0;
+                border-bottom: 4px solid var(--red);
+            }
+            
+            .header-container {
+                display: grid;
+                grid-template-columns: 150px 1fr;
+                gap: 60px;
+                align-items: start;
+            }
+            
+            .logo {
+                width: 200px;
+                height: 200px;
+                object-fit: contain;
+            }
+            
+            .content-section {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .site-title {
+                color: var(--dark-blue);
+                font-size: 2.5rem;
+                margin: 0;
+                line-height: 1.2;
+            }
+            
+            .mission-text {
+                color: var(--dark-grey);
+                font-size: 1.2rem;
+                line-height: 1.5;
+                margin: 0;
+            }
+            
+            .highlight {
+                color: var(--red);
+                font-weight: 500;
+            }
+            
+            .digital-emphasis {
+                color: var(--dark-blue);
+                font-weight: 500;
+            }
+            
+            .main-content {
+                flex: 1;
+                padding: 20px 0;
+            }
+            
+            .carousel {
+                height: calc(100vh - 400px);
+                margin-bottom: 20px;
+            }
+            
+            .carousel-item {
+                height: 100%;
+            }
+            
+            .solution-card {
+                height: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+                padding: 40px;
+                background-color: var(--white);
+            }
+            
+            .solution-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 20px;
+            }
+            
+            .solution-info {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                text-align: left;
+                padding: 20px;
+            }
+            
+            .solution-title {
+                color: var(--dark-blue);
+                font-size: 3rem;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            
+            .solution-description {
+                font-size: 1.4rem;
+                margin-bottom: 20px;
+                line-height: 1.6;
+            }
+            
+            .key-features {
+                list-style: none;
+                padding: 0;
+                margin: 0 0 20px 0;
+                font-size: 1.2rem;
+            }
+            
+            .key-features li {
+                margin-bottom: 10px;
+                padding-left: 25px;
+                position: relative;
+            }
+            
+            .key-features li:before {
+                content: "•";
+                color: var(--red);
+                position: absolute;
+                left: 0;
+                font-size: 1.5rem;
+            }
+            
+            .qr-code-container {
+                text-align: center;
+                margin-top: auto;
+            }
+            
+            .qr-code {
+                width: 200px;
+                height: 200px;
+                margin: 10px 0;
+            }
+            
+            .scan-text {
+                font-size: 1.2rem;
+                color: var(--dark-blue);
+                margin-top: 10px;
+            }
+            
+            .footer {
+                background-color: var(--dark-blue);
+                color: var(--white);
+                padding: 20px 0;
+                margin-top: auto;
+            }
+            
+            .footer-text {
+                font-size: 1.4rem;
+                margin: 0;
+                text-align: center;
+            }
+            
+            .footer-highlight {
+                color: var(--red);
+            }
+            
+            .footer-email {
+                color: var(--white);
+                text-decoration: none;
+                border-bottom: 2px solid var(--red);
+                padding-bottom: 2px;
+            }
+            
+            .footer-email:hover {
+                color: var(--red);
+            }
+            
+            .carousel-control-prev, .carousel-control-next {
+                width: 8%;
+                opacity: 0.8;
+            }
+            
+            .carousel-control-prev-icon, .carousel-control-next-icon {
+                background-color: var(--dark-blue);
+                border-radius: 50%;
+                padding: 30px;
+                width: 60px;
+                height: 60px;
+            }
+            
+            .carousel-indicators {
+                bottom: 20px;
+            }
+            
+            .carousel-indicators [data-bs-target] {
+                background-color: var(--red);
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                margin: 0 8px;
+            }
+    
+            @media (max-width: 768px) {
+                .header-container {
+                    grid-template-columns: 80px 1fr;
+                    gap: 20px;
+                }
+                
+                .logo {
+                    width: 80px;
+                    height: 80px;
+                }
+                
+                .site-title {
+                    font-size: 2rem;
+                }
+                
+                .mission-text {
+                    font-size: 1.1rem;
+                }
+            }
+        </style>
+    </head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-container">
+                <img src="images/Logo-Square-RGB-email.png" alt="IFRC Logo" class="logo">
+                <div class="content-section">
+                    <h1 class="site-title">Health and Care | Digital Health Solutions and Data</h1>
+                    <p class="mission-text">
+                        The <span class="highlight">International Federation of Red Cross and Red Crescent Societies (IFRC)</span> supports people's health throughout their entire lifetime, in emergency and non-emergency settings. Our work spans health promotion, prevention, diagnosis, treatment, rehabilitation and palliative care - now enhanced through <span class="digital-emphasis">innovative digital health solutions</span>.
+                    </p>
+                    <p class="mission-text">
+                        Empowering our <span class="highlight">health workforce and volunteers</span> with <span class="digital-emphasis">digital tools and technologies</span> to deliver better care, make informed decisions, and reach more communities effectively and efficiently.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div id="solutionsCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <!-- First slide -->
+                <div class="carousel-item active">
+                    <div class="solution-card">
+                        <img src="images/Inpatient_care.gif" height="85%" width="85%" alt="IFRC RCHIS">
+                        <div class="solution-info">
+                            <h2 class="solution-title">RCRC Health Information System</h2>
+                            <p class="solution-description">The Red Cross and Red Crescent Health Information System (RCHIS) is a digital tool designed for efficient patient information management in emergency responses.</p>
+                            <ul class="key-features">
+                                <li>Enhances patient care by securely tracking treatment at every stage.</li>
+                                <li>Supports clinicians with streamlined reporting and collaboration tools.</li>
+                                <li>Built-in WHO EMT Minimum Data Set (MDS) Report</li>
+                                <li>Offline capability for remote locations</li>
+                            </ul>
+                            <div class="qr-code-container">
+                                <img src="images/qr/RCHIS.png" class="qr-code" alt="QR Code for RCHIS">
+                                <p class="scan-text">Scan to learn more about RCHIS</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Second slide -->
+                <div class="carousel-item">
+                    <div class="solution-card">
+                        <img src="images/prof_health_mapping.png" class="solution-image" alt="Professional Health Mapping">
+                        <div class="solution-info">
+                            <h2 class="solution-title">Professional Health Service Mapping</h2>
+                            <p class="solution-description">Highlights the clinical health services provided by National Societies of the Red Cross and Red Crescent</p>
+                            <ul class="key-features">
+                                <li>Overview of clinical health services offered by National Societies of the Red Cross and Red Crescent.</li>
+                                <li>Detailed breakdown by region, National Society, types of facilities, services, and resources available.</li>
+                                <li>Highlights of the health and medical professionals involved in delivering these services.</li>
+                                <li>Access to further information on each National Society's capacity through the IFRC GO platform.</li>
+                            </ul>
+                            <div class="qr-code-container">
+                                <img src="images/qr/qr_code_ProfessionalHealthMapping.png" class="qr-code" alt="QR Code for Health App">
+                                <p class="scan-text">Scan to discover</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Third slide -->
+                <div class="carousel-item">
+                    <div class="solution-card">
+                        <img src="images/how-does-nyss-work-p-1080.png" height="90%" width="100%" alt="CBS Nyss">
+                        <div class="solution-info">
+                            <h2 class="solution-title">Commnity-Based Surveillance (CBS) Nyss</h2>
+                            <p class="solution-description">CBS Nyss is a cloud-based and open-source platform that supports real-time community-based surveillance for early detection and response to health risks.</p>
+                            <ul class="key-features">
+                                <li>Real-time data collection, management, and analysis for community-based surveillance (CBS).</li>
+                                <li>Uses SMS-based reporting from trained volunteers to detect and report health risks.</li>
+                                <li>Sends automated alerts for rapid responses to potential outbreaks.</li>
+                                <li>Developed by Norwegian Red Cross, in cooperation with the IFRC and Belgium Red Cross.</li>
+                            </ul>
+                            <div class="qr-code-container">
+                                <img src="images/qr/qr_code_CBSNyss.png" class="qr-code" alt="CBS Nyss">
+                                <p class="scan-text">Scan to learn more</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fourth slide -->
+                <div class="carousel-item">
+                    <div class="solution-card">
+                        <img src="images/Universal-First-Aid-APP-300x300.png" height="70%" width="50%" alt="Universal First Aid App">
+                        <div class="solution-info">
+                            <h2 class="solution-title">Universal First Aid Application</h2>
+                            <p class="solution-description">The Universal First Aid App provides users with life-saving first aid guidance and resources, accessible anytime, anywhere.</p>
+                            <ul class="key-features">
+                                <li>Offers step-by-step first aid instructions for various emergencies.</li>
+                                <li>Available offline, ensuring access without internet in critical situations.</li>
+                                <li>Multilingual and customizable to suit local contexts and needs.</li>
+                                <li>Available on IOS and Android</li>
+                            </ul>
+                            <div class="qr-code-container">
+                                <img src="images/qr/qr_code_FirstAidApp.svg" class="qr-code" alt="CBS Nyss">
+                                <p class="scan-text">Scan to learn more</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#solutionsCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#solutionsCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#solutionsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#solutionsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#solutionsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#solutionsCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                Want to integrate these solutions in your operations? 
+                <span class="footer-highlight">Contact </span>
+                <a href="mailto:john.esplana@ifrc.org" class="footer-email">john.esplana@ifrc.org</a>
+                <span class="footer-highlight"> or </span>
+                <a href="mailto:adrian.calvo@ifrc.org" class="footer-email">adrian.calvo@ifrc.org</a>
+                <span class="footer-highlight"> to learn more</span>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Wait for the DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize the carousel with options
+            const carousel = new bootstrap.Carousel(document.querySelector('#solutionsCarousel'), {
+                interval: 10000, // Changed to 10 seconds for better user experience
+                ride: true,    // Changed from 'carousel' to true
+                wrap: true,
+                touch: true    // Enable touch swiping on mobile
+            });
+
+            // Force start the carousel
+            carousel.cycle();
+        });
+    </script>
+</body>
+</html>
